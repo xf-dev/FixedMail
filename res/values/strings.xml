@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">test</string>
+    <string name="address_button">address</string>
+    <string name="new_info_text">add</string>
+    <string name="mail_name_label">mail name</string>
+    <string name="delivery_address_label">delivery address</string>
+    <string name="title_label">title</string>
+    <string name="body_label">body</string>
+    <string name="register_button">register</string>
+    <string name="option_add">Add</string>
+    <string name="send_button">Send</string>
+
+</resources>

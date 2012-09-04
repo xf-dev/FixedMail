@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">てすと</string>
+    <string name="address_button">送信先</string>
+    <string name="new_info_text">新規登録</string>
+    <string name="mail_name_label">送信名</string>
+    <string name="delivery_address_label">送信先</string>
+    <string name="title_label">タイトル</string>
+    <string name="body_label">本文</string>
+    <string name="register_button">登録</string>
+    <string name="option_add">追加</string>
+    <string name="send_button">送信</string>
+
+</resources>
