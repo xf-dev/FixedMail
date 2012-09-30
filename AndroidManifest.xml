@@ -20,6 +20,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".EditActivity"></activity>
-        <activity android:name="xf.fixedmail.ContactListActivity"></activity>
+        <activity android:name=".ContactListActivity"></activity>
     </application>
 </manifest>

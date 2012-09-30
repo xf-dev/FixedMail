@@ -1,4 +1,4 @@
-package xf.fixedmail;
+package jp.co.crossfinity.fixedmail;
 
 import jp.co.crossfinity.fixedmail.R;
 import android.app.Activity;
@@ -51,7 +51,7 @@ public class FixedMailActivity extends Activity implements OnItemClickListener {
 		if (c.getCount() > 0) {
 			while (c.moveToNext()) {
 				MailInfo info = new MailInfo();
-				info.setId(c.getColumnIndex("id"));
+				info.setId(c.getInt(c.getColumnIndex("id")));
 				info.setName(c.getString(c.getColumnIndex("name")));
 				info.setTitle(c.getString(c.getColumnIndex("title")));
 				info.setAddress(c.getString(c.getColumnIndex("address")));
@@ -95,6 +95,7 @@ public class FixedMailActivity extends Activity implements OnItemClickListener {
 class ViewHolder {
 	TextView nameText;
 	TextView titleText;
+	Button editButton;
 	Button sendButton;
 }
 
@@ -128,6 +129,19 @@ class MailInfoArrayAdapter extends ArrayAdapter<MailInfo> {
 			vh = new ViewHolder();
 			vh.nameText = (TextView) view.findViewById(R.id.name);
 			vh.titleText = (TextView) view.findViewById(R.id.title);
+			vh.editButton = (Button) view.findViewById(R.id.edit_button);
+			vh.editButton.setTag(this.getItem(position));
+			vh.editButton.setOnClickListener(new OnClickListener() {
+
+				@Override
+				public void onClick(View v) {
+					MailInfo info = (MailInfo) v.getTag();
+					Intent intent = new Intent(v.getContext(), EditActivity.class);
+					intent.putExtra("mailInfo", info);
+					v.getContext().startActivity(intent);
+				}
+			});
+
 			vh.sendButton = (Button) view.findViewById(R.id.send_button);
 
 			vh.sendButton.setTag(this.getItem(position));

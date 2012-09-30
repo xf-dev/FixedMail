@@ -1,4 +1,4 @@
-package xf.fixedmail;
+package jp.co.crossfinity.fixedmail;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,12 +47,12 @@ public class ContactListActivity extends Activity {
 				String email = emails
 						.getString(emails
 								.getColumnIndex(ContactsContract.CommonDataKinds.Email.DATA));
+				mailInfo = new MailInfo();
 				mailInfo.setName(name);
 				mailInfo.setAddress(email);
 				mailInfoList.add(mailInfo);
 				strContact = name;
 				strContact += "\n " + email;
-				mailInfo = new MailInfo();
 				adapter.add(strContact);
 			}
 			emails.close();
