@@ -1,4 +1,4 @@
-package xf.fixedmail;
+package jp.co.crossfinity.fixedmail;
 
 import jp.co.crossfinity.fixedmail.R;
 import android.app.Activity;
@@ -15,10 +15,33 @@ public class EditActivity extends Activity {
 
 	private final int REQUEST_CODE = 111;
 
+	private int editId = 0;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.edit);
+
+		MailInfo mailInfo = null;
+		Intent intent = getIntent();
+		if (intent != null) {
+			mailInfo = (MailInfo) intent.getSerializableExtra("mailInfo");
+			if (mailInfo != null) {
+				TextView nameText = (TextView) findViewById(R.id.mail_name_text);
+				nameText.setText(mailInfo.getName());
+				TextView addressText = (TextView) findViewById(R.id.delivery_address_text);
+				addressText.setText(mailInfo.getAddress());
+				TextView titleText = (TextView) findViewById(R.id.title_text);
+				titleText.setText(mailInfo.getTitle());
+				TextView bodyText = (TextView) findViewById(R.id.body_text);
+				bodyText.setText(mailInfo.getBody());
+				editId = mailInfo.getId();
+			} else {
+				editId = 0;
+			}
+		} else {
+			editId = 0;
+		}
 
 		Button addressBtn = (Button) findViewById(R.id.address_button);
 		addressBtn.setOnClickListener(new View.OnClickListener() {
@@ -73,7 +96,11 @@ public class EditActivity extends Activity {
 		SQLiteDatabase db = dbHelper.getWritableDatabase();
 		long ret;
 		try {
-			ret = db.insert("MAIL_INFO", null, values);
+			if (editId == 0) {
+				ret = db.insert("MAIL_INFO", null, values);
+			} else {
+				ret = db.update("MAIL_INFO", values, "id=" + Integer.valueOf(editId).toString(), null);
+			}
 		} finally {
 			db.close();
 		}

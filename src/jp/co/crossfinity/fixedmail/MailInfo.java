@@ -1,4 +1,4 @@
-package xf.fixedmail;
+package jp.co.crossfinity.fixedmail;
 
 import java.io.Serializable;
 

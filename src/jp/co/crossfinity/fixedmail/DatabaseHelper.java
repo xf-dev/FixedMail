@@ -1,4 +1,4 @@
-package xf.fixedmail;
+package jp.co.crossfinity.fixedmail;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
